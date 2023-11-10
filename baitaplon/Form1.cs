@@ -63,7 +63,7 @@
 
         private void tìmKiếmHóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTimhoadon_Nhanvien nv = new frmTimhoadon_Nhanvien();
+            Form2 nv=new Form2();
             nv.Show();
         }
 

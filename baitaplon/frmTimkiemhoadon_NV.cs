@@ -60,16 +60,7 @@ namespace baitaplon
             Database.SqlConnection.Close();
 
         }
-        private void getBill(string sohoadon)
-        {
-            Database.SqlConnection.Open();
-            String sql = "Select * from Hoadon where +" + "'" + sohoadon + "'" + "=Cthoadon.sohd and " +
-                "cthoadon.mahh=hanghoa.mhh";
-            String sql1 = "select HOADON.SOHD ,khachhang,diachi,diachi,ngayhd ,coalesce(CThoadon.SOLUONG , 0) * coalesce(Hanghoa.DONGIA , 0) as thanhtien from HOADON" +
-                " \r\ninner join CTHOADON on CTHOADON.SOHD =Hoadon.SOHD " +
-                "\r\ninner join HANGHOA on hanghoa.MAHH =CThoadon.MAHH  ";
-
-        }
+       
         private void LoadDataBill()
         {
             Database.SqlConnection.Open();
