@@ -1,0 +1,45 @@
+D:\csharp\winform\baitaplon\baitaplon\bin\Debug\net6.0-windows\baitaplon.exe
+D:\csharp\winform\baitaplon\baitaplon\bin\Debug\net6.0-windows\baitaplon.deps.json
+D:\csharp\winform\baitaplon\baitaplon\bin\Debug\net6.0-windows\baitaplon.runtimeconfig.json
+D:\csharp\winform\baitaplon\baitaplon\bin\Debug\net6.0-windows\baitaplon.dll
+D:\csharp\winform\baitaplon\baitaplon\bin\Debug\net6.0-windows\baitaplon.pdb
+D:\csharp\winform\baitaplon\baitaplon\obj\Debug\net6.0-windows\baitaplon.Form1.resources
+D:\csharp\winform\baitaplon\baitaplon\obj\Debug\net6.0-windows\baitaplon.csproj.GenerateResource.cache
+D:\csharp\winform\baitaplon\baitaplon\obj\Debug\net6.0-windows\baitaplon.GeneratedMSBuildEditorConfig.editorconfig
+D:\csharp\winform\baitaplon\baitaplon\obj\Debug\net6.0-windows\baitaplon.AssemblyInfoInputs.cache
+D:\csharp\winform\baitaplon\baitaplon\obj\Debug\net6.0-windows\baitaplon.AssemblyInfo.cs
+D:\csharp\winform\baitaplon\baitaplon\obj\Debug\net6.0-windows\baitaplon.csproj.CoreCompileInputs.cache
+D:\csharp\winform\baitaplon\baitaplon\obj\Debug\net6.0-windows\baitaplon.dll
+D:\csharp\winform\baitaplon\baitaplon\obj\Debug\net6.0-windows\refint\baitaplon.dll
+D:\csharp\winform\baitaplon\baitaplon\obj\Debug\net6.0-windows\baitaplon.pdb
+D:\csharp\winform\baitaplon\baitaplon\obj\Debug\net6.0-windows\baitaplon.genruntimeconfig.cache
+D:\csharp\winform\baitaplon\baitaplon\obj\Debug\net6.0-windows\ref\baitaplon.dll
+D:\csharp\winform\baitaplon\baitaplon\obj\Debug\net6.0-windows\baitaplon.fmQLPhongban.resources
+D:\csharp\winform\baitaplon\baitaplon\obj\Debug\net6.0-windows\baitaplon.Properties.Resources.resources
+D:\csharp\winform\baitaplon (1)\baitaplon\bin\Debug\net6.0-windows\baitaplon.exe
+D:\csharp\winform\baitaplon (1)\baitaplon\bin\Debug\net6.0-windows\baitaplon.deps.json
+D:\csharp\winform\baitaplon (1)\baitaplon\bin\Debug\net6.0-windows\baitaplon.runtimeconfig.json
+D:\csharp\winform\baitaplon (1)\baitaplon\bin\Debug\net6.0-windows\baitaplon.dll
+D:\csharp\winform\baitaplon (1)\baitaplon\bin\Debug\net6.0-windows\baitaplon.pdb
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.fmQLPhongban.resources
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.fmQuanlinhanvien.resources
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.Form1.resources
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.frmDSTaikhoan.resources
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.frmLogin.resources
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.frmQLHanghoa.resources
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.frmQLHoadon.resources
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.frmThemTaikhoan.resources
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.Form2.resources
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.frmTimhoadon_Nhanvien.resources
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.frmTKNhanvien_Phong.resources
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.Properties.Resources.resources
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.csproj.GenerateResource.cache
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.GeneratedMSBuildEditorConfig.editorconfig
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.AssemblyInfoInputs.cache
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.AssemblyInfo.cs
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.csproj.CoreCompileInputs.cache
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.dll
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\refint\baitaplon.dll
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.pdb
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\baitaplon.genruntimeconfig.cache
+D:\csharp\winform\baitaplon (1)\baitaplon\obj\Debug\net6.0-windows\ref\baitaplon.dll
