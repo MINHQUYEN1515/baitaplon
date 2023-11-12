@@ -54,6 +54,7 @@ namespace baitaplon
             Database.SqlConnection.Close();
         }
 
+
         private void fmQuanlinhanvien_Load(object sender, EventArgs e)
         {
 
