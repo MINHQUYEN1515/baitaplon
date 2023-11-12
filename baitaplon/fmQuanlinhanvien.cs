@@ -19,11 +19,13 @@ namespace baitaplon
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            clear();
-            settrue();
-            btnLuu.Enabled = true;
-            btnThem.Enabled = false;
-            themmoi = "themmoi";
+            txtManv.Focus();
+            txtHotennv.Clear();
+            txtNgaysinh.Clear();
+            txtPhai.Clear();
+            txtHesochucvu.Clear();
+            txtHesoluong.Clear();
+            txtTienluong.Clear();
         }
 
                 private void btnSua_Click(object sender, EventArgs e)
@@ -54,6 +56,21 @@ namespace baitaplon
             Database.SqlConnection.Close();
         }
 
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            myConnect.Open();
+
+            if (btnThem.Enabled == true)
+            {
+                string sql1 = "insert into QUANLINV(MANV, HOTENNV, NGAYSINH, PHAI, HESOCHUCVU, HESOLUONG, LUONG) values('" + txtManv.Text + "',N'" + txtHotennv.Text + "',N'" + txtNgaysinh.Text + "',N'" + txtPhai.Text + txtHesochucvu.Text + "',N'" + txtHesoluong.Text + "' ,N'" + txtTienluong.Text + "' ,N'" + "')";
+                SqlCommand cmd1 = new SqlCommand(sql1, myConnect);
+                cmd1.ExecuteNonQuery();
+                MessageBox.Show("Thêm mới thành công", "Thông báo");
+            }
+            SetNull();
+            LoadListView();
+            myConnect.Close();
+        }
 
         private void fmQuanlinhanvien_Load(object sender, EventArgs e)
         {
