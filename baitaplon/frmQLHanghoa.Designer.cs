@@ -30,15 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQLHanghoa));
             panel1 = new Panel();
-            label1 = new Label();
-            label2 = new Label();
+            txtdongia = new TextBox();
+            dtpngaysanxuat = new DateTimePicker();
+            txttenhang = new TextBox();
+            txtmahang = new TextBox();
             label3 = new Label();
             label4 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            dateTimePicker1 = new DateTimePicker();
-            textBox3 = new TextBox();
-            dataGridView1 = new DataGridView();
+            label1 = new Label();
+            label2 = new Label();
+            dtgvhanghoa = new DataGridView();
             c = new Panel();
             btnThoat = new Button();
             btnXoa = new Button();
@@ -46,17 +46,17 @@
             btnSua = new Button();
             btnThem = new Button();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtgvhanghoa).BeginInit();
             c.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.DarkOrange;
-            panel1.Controls.Add(textBox3);
-            panel1.Controls.Add(dateTimePicker1);
-            panel1.Controls.Add(textBox2);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(txtdongia);
+            panel1.Controls.Add(dtpngaysanxuat);
+            panel1.Controls.Add(txttenhang);
+            panel1.Controls.Add(txtmahang);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label1);
@@ -66,25 +66,34 @@
             panel1.Size = new Size(889, 150);
             panel1.TabIndex = 0;
             // 
-            // label1
+            // txtdongia
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(53, 29);
-            label1.Name = "label1";
-            label1.Size = new Size(77, 22);
-            label1.TabIndex = 1;
-            label1.Text = "Mã hàng";
+            txtdongia.Location = new Point(618, 103);
+            txtdongia.Name = "txtdongia";
+            txtdongia.Size = new Size(210, 27);
+            txtdongia.TabIndex = 8;
             // 
-            // label2
+            // dtpngaysanxuat
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(53, 105);
-            label2.Name = "label2";
-            label2.Size = new Size(129, 22);
-            label2.TabIndex = 2;
-            label2.Text = " Ngày  sản xuất";
+            dtpngaysanxuat.Format = DateTimePickerFormat.Short;
+            dtpngaysanxuat.Location = new Point(185, 105);
+            dtpngaysanxuat.Name = "dtpngaysanxuat";
+            dtpngaysanxuat.Size = new Size(196, 27);
+            dtpngaysanxuat.TabIndex = 7;
+            // 
+            // txttenhang
+            // 
+            txttenhang.Location = new Point(618, 26);
+            txttenhang.Name = "txttenhang";
+            txttenhang.Size = new Size(214, 27);
+            txttenhang.TabIndex = 6;
+            // 
+            // txtmahang
+            // 
+            txtmahang.Location = new Point(185, 27);
+            txtmahang.Name = "txtmahang";
+            txtmahang.Size = new Size(189, 27);
+            txtmahang.TabIndex = 5;
             // 
             // label3
             // 
@@ -106,43 +115,37 @@
             label4.TabIndex = 4;
             label4.Text = "Tên hàng";
             // 
-            // textBox1
+            // label1
             // 
-            textBox1.Location = new Point(185, 27);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(189, 27);
-            textBox1.TabIndex = 5;
+            label1.AutoSize = true;
+            label1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(53, 29);
+            label1.Name = "label1";
+            label1.Size = new Size(77, 22);
+            label1.TabIndex = 1;
+            label1.Text = "Mã hàng";
             // 
-            // textBox2
+            // label2
             // 
-            textBox2.Location = new Point(618, 26);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(214, 27);
-            textBox2.TabIndex = 6;
+            label2.AutoSize = true;
+            label2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(53, 105);
+            label2.Name = "label2";
+            label2.Size = new Size(129, 22);
+            label2.TabIndex = 2;
+            label2.Text = " Ngày  sản xuất";
             // 
-            // dateTimePicker1
+            // dtgvhanghoa
             // 
-            dateTimePicker1.Location = new Point(185, 105);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(196, 27);
-            dateTimePicker1.TabIndex = 7;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(618, 103);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(210, 27);
-            textBox3.TabIndex = 8;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(61, 199);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(889, 188);
-            dataGridView1.TabIndex = 1;
+            dtgvhanghoa.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgvhanghoa.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgvhanghoa.Location = new Point(61, 199);
+            dtgvhanghoa.Name = "dtgvhanghoa";
+            dtgvhanghoa.RowHeadersWidth = 51;
+            dtgvhanghoa.RowTemplate.Height = 29;
+            dtgvhanghoa.Size = new Size(889, 188);
+            dtgvhanghoa.TabIndex = 1;
+            dtgvhanghoa.CellContentClick += dtgvhanghoa_CellContentClick;
             // 
             // c
             // 
@@ -169,6 +172,7 @@
             btnThoat.Text = "Thoát";
             btnThoat.TextAlign = ContentAlignment.MiddleRight;
             btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
             // 
             // btnXoa
             // 
@@ -182,6 +186,7 @@
             btnXoa.Text = "Xóa";
             btnXoa.TextAlign = ContentAlignment.MiddleRight;
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnLuu
             // 
@@ -195,6 +200,7 @@
             btnLuu.Text = "Lưu";
             btnLuu.TextAlign = ContentAlignment.MiddleRight;
             btnLuu.UseVisualStyleBackColor = true;
+            btnLuu.Click += btnLuu_Click;
             // 
             // btnSua
             // 
@@ -208,6 +214,7 @@
             btnSua.Text = "Sửa";
             btnSua.TextAlign = ContentAlignment.MiddleRight;
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // btnThem
             // 
@@ -221,6 +228,7 @@
             btnThem.Text = "Thêm";
             btnThem.TextAlign = ContentAlignment.MiddleRight;
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // frmQLHanghoa
             // 
@@ -228,13 +236,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1025, 511);
             Controls.Add(c);
-            Controls.Add(dataGridView1);
+            Controls.Add(dtgvhanghoa);
             Controls.Add(panel1);
             Name = "frmQLHanghoa";
             Text = "DANH MUC HÀNG HÓA";
+            Load += frmQLHanghoa_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtgvhanghoa).EndInit();
             c.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -242,15 +251,15 @@
         #endregion
 
         private Panel panel1;
-        private TextBox textBox3;
-        private DateTimePicker dateTimePicker1;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox txtdongia;
+        private DateTimePicker dtpngaysanxuat;
+        private TextBox txttenhang;
+        private TextBox txtmahang;
         private Label label3;
         private Label label4;
         private Label label1;
         private Label label2;
-        private DataGridView dataGridView1;
+        private DataGridView dtgvhanghoa;
         private Panel c;
         private Button btnThoat;
         private Button btnXoa;
