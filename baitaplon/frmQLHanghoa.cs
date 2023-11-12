@@ -29,7 +29,7 @@ namespace baitaplon
             if (Database.SqlConnection.State == ConnectionState.Closed)
             {
                 Database.SqlConnection.Open();
-                string sql = @"select * from HANGHOA ";
+                string sql = @"select MAHANG, TENHANG , NGAYSX, DONGIA from HANGHOA ";
                 SqlDataAdapter ad = new SqlDataAdapter(sql, Database.SqlConnection);
                 DataTable dt = new DataTable();
                 ad.Fill(dt);
@@ -40,6 +40,7 @@ namespace baitaplon
                 dtgvhanghoa.Columns[3].HeaderText = "Đơn giá";
                 dtgvhanghoa.AllowUserToAddRows = false;
                 dtgvhanghoa.EditMode = DataGridViewEditMode.EditProgrammatically;
+                dtgvhanghoa.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             }
         }
 
@@ -88,32 +89,43 @@ namespace baitaplon
                 Database.SqlConnection.Open();
                 if (themmoi == "themmoi")
                 {
-                    string sql = @"INSERT INTO HANGHOA (MAHANG, TENHANG, NGAYSX, DONGIA)
-                           VALUES (@MAHANG, @TENHANG, @NGAYSX, @DONGIA)";
-
+                    string sql = "select count(*) from HANGHOA where MAHANG = '" + txtmahang.Text + "'";
                     SqlCommand cmd = new SqlCommand(sql, Database.SqlConnection);
-                    cmd.Parameters.AddWithValue("@MAHANG", txtmahang.Text);
-                    cmd.Parameters.AddWithValue("@TENHANG", txttenhang.Text);
-                    cmd.Parameters.Add("@NGAYSX", SqlDbType.DateTime).Value = dtpngaysanxuat.Value;
-                    cmd.Parameters.AddWithValue("@DONGIA", txtdongia.Text);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Thêm mới thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    int count = (int)cmd.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Đã có hàng hóa này rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else 
+                    {
+                        string sqladd = @"INSERT INTO HANGHOA (MAHANG, TENHANG, NGAYSX, DONGIA)
+                           VALUES (@MAHANG, @TENHANG, @NGAYSX, @DONGIA)";
+                        SqlCommand cmd1 = new SqlCommand(sqladd, Database.SqlConnection);
+                        cmd1.Parameters.AddWithValue("@MAHANG", txtmahang.Text);
+                        cmd1.Parameters.AddWithValue("@TENHANG", txttenhang.Text);
+                        cmd1.Parameters.Add("@NGAYSX", SqlDbType.DateTime).Value = dtpngaysanxuat.Value;
+                        cmd1.Parameters.AddWithValue("@DONGIA", txtdongia.Text);
+                        Load_DataGridView();
+                        cmd1.ExecuteNonQuery();
+                        MessageBox.Show("Thêm mới thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
+
                 if (themmoi == "sua")
                 {
                     string sqlupdate = @"UPDATE HANGHOA SET TENHANG = @TENHANG, NGAYSX = @NGAYSX, DONGIA = @DONGIA WHERE MAHANG = @MAHANG";
 
-                    using (SqlCommand cmd = new SqlCommand(sqlupdate, Database.SqlConnection))
+                    using (SqlCommand cmd2 = new SqlCommand(sqlupdate, Database.SqlConnection))
                     {
-                        cmd.Parameters.AddWithValue("@TENHANG", txttenhang.Text);
-                        cmd.Parameters.Add("@NGAYSX", SqlDbType.DateTime).Value = dtpngaysanxuat.Value;
-                        cmd.Parameters.AddWithValue("@DONGIA", txtdongia.Text);
-                        cmd.Parameters.AddWithValue("@MAHANG", txtmahang.Text);
-                        cmd.ExecuteNonQuery();
+                        cmd2.Parameters.AddWithValue("@TENHANG", txttenhang.Text);
+                        cmd2.Parameters.Add("@NGAYSX", SqlDbType.DateTime).Value = dtpngaysanxuat.Value;
+                        cmd2.Parameters.AddWithValue("@DONGIA", txtdongia.Text);
+                        cmd2.Parameters.AddWithValue("@MAHANG", txtmahang.Text);
+                        Load_DataGridView();
+                        cmd2.ExecuteNonQuery();
                         MessageBox.Show("Chỉnh sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    }   
                 }
-                Load_DataGridView();
                 btnLuu.Enabled = false;
                 btnThem.Enabled = true;
                 clear();
@@ -124,6 +136,7 @@ namespace baitaplon
         {
             themmoi = "sua";
             settrue();
+            txtmahang.Enabled = false;
             btnLuu.Enabled = true;
         }
 
@@ -137,9 +150,8 @@ namespace baitaplon
                 {
                     string sql = "delete from HANGHOA Where MAHANG = N'" + txtmahang.Text + "'";
                     SqlCommand cmd = new SqlCommand(sql, Database.SqlConnection);
-                    cmd.ExecuteNonQuery();
-                    Refresh();
                     Load_DataGridView();
+                    cmd.ExecuteNonQuery();
                     Database.SqlConnection.Close();
                     clear();
                 }
