@@ -16,34 +16,34 @@ namespace baitaplon
         public frmQLHanghoa()
         {
             InitializeComponent();
+            LoadForm();
         }
 
         private void frmQLHanghoa_Load(object sender, EventArgs e)
         {
-            Load_DataGridView();
             setfalse();
             btnLuu.Enabled = false;
         }
-        private void Load_DataGridView()
+        private void LoadForm()
         {
-            if (Database.SqlConnection.State == ConnectionState.Closed)
+            try
             {
+                string queryString = "SELECT * FROM HANGHOA";
                 Database.SqlConnection.Open();
-                string sql = @"select MAHANG, TENHANG , NGAYSX, DONGIA from HANGHOA ";
-                SqlDataAdapter ad = new SqlDataAdapter(sql, Database.SqlConnection);
-                DataTable dt = new DataTable();
-                ad.Fill(dt);
-                dtgvhanghoa.DataSource = dt;
-                dtgvhanghoa.Columns[0].HeaderText = "Mã hàng";
-                dtgvhanghoa.Columns[1].HeaderText = "Tên hàng";
-                dtgvhanghoa.Columns[2].HeaderText = "Ngày sản xuất";
-                dtgvhanghoa.Columns[3].HeaderText = "Đơn giá";
-                dtgvhanghoa.AllowUserToAddRows = false;
-                dtgvhanghoa.EditMode = DataGridViewEditMode.EditProgrammatically;
-                dtgvhanghoa.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(queryString, Database.SqlConnection);
+                DataTable table = new DataTable();
+                sqlDataAdapter.Fill(table);
+                dtgvhanghoa.DataSource = table;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Có lỗi: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Database.SqlConnection.Close();
             }
         }
-
         private void dtgvhanghoa_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -72,69 +72,73 @@ namespace baitaplon
         {
             this.Close();
         }
-        string themmoi = "";
+        bool themmoi = true;
         private void btnThem_Click(object sender, EventArgs e)
         {
             clear();
             settrue();
             btnLuu.Enabled = true;
             btnThem.Enabled = false;
-            themmoi = "themmoi";
+            themmoi = true;
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (Database.SqlConnection.State == ConnectionState.Closed)
+            var maHang = txtmahang.Text;
+            var tenHang = txttenhang.Text;
+            var ngaysx = dtpngaysanxuat.Value;
+            var donGia = txtdongia.Text;
+            try
             {
                 Database.SqlConnection.Open();
-                if (themmoi == "themmoi")
+                SqlCommand sqlCommand = new SqlCommand();
+                sqlCommand.Connection = Database.SqlConnection;
+                if (themmoi == false)
                 {
-                    string sql = "select count(*) from HANGHOA where MAHANG = '" + txtmahang.Text + "'";
-                    SqlCommand cmd = new SqlCommand(sql, Database.SqlConnection);
-                    int count = (int)cmd.ExecuteScalar();
-                    if (count > 0)
-                    {
-                        MessageBox.Show("Đã có hàng hóa này rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else 
-                    {
-                        string sqladd = @"INSERT INTO HANGHOA (MAHANG, TENHANG, NGAYSX, DONGIA)
-                           VALUES (@MAHANG, @TENHANG, @NGAYSX, @DONGIA)";
-                        SqlCommand cmd1 = new SqlCommand(sqladd, Database.SqlConnection);
-                        cmd1.Parameters.AddWithValue("@MAHANG", txtmahang.Text);
-                        cmd1.Parameters.AddWithValue("@TENHANG", txttenhang.Text);
-                        cmd1.Parameters.Add("@NGAYSX", SqlDbType.DateTime).Value = dtpngaysanxuat.Value;
-                        cmd1.Parameters.AddWithValue("@DONGIA", txtdongia.Text);
-                        Load_DataGridView();
-                        cmd1.ExecuteNonQuery();
-                        MessageBox.Show("Thêm mới thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    string queryString = @"UPDATE HANGHOA
+                                        SET TENHANG = @TENHANG,
+                                        NGAYSX = @NGAYSX,
+                                        DONGIA = @DONGIA
+                                        WHERE MAHANG = @MAHANG";
+                    sqlCommand.CommandText = queryString;
+                    sqlCommand.Parameters.AddWithValue("@MAHANG", maHang);
+                    sqlCommand.Parameters.AddWithValue("@TENHANG", tenHang);
+                    sqlCommand.Parameters.AddWithValue("@NGAYSX", ngaysx);
+                    sqlCommand.Parameters.AddWithValue("@DONGIA", donGia);
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("Đã cập nhật Hàng Hóa " + maHang);
+                    clear();
+                    setfalse();
+                    btnThem.Enabled = true;
                 }
-
-                if (themmoi == "sua")
+                else
                 {
-                    string sqlupdate = @"UPDATE HANGHOA SET TENHANG = @TENHANG, NGAYSX = @NGAYSX, DONGIA = @DONGIA WHERE MAHANG = @MAHANG";
-
-                    using (SqlCommand cmd2 = new SqlCommand(sqlupdate, Database.SqlConnection))
-                    {
-                        cmd2.Parameters.AddWithValue("@TENHANG", txttenhang.Text);
-                        cmd2.Parameters.Add("@NGAYSX", SqlDbType.DateTime).Value = dtpngaysanxuat.Value;
-                        cmd2.Parameters.AddWithValue("@DONGIA", txtdongia.Text);
-                        cmd2.Parameters.AddWithValue("@MAHANG", txtmahang.Text);
-                        Load_DataGridView();
-                        cmd2.ExecuteNonQuery();
-                        MessageBox.Show("Chỉnh sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }   
+                    string queryString = @"INSERT INTO HANGHOA
+                                        VALUES (@MAHANG, @TENHANG,@NGAYSX, @DONGIA)";
+                    sqlCommand.CommandText = queryString;
+                    sqlCommand.Parameters.AddWithValue("@MAHANG", maHang);
+                    sqlCommand.Parameters.AddWithValue("@TENHANG", tenHang);
+                    sqlCommand.Parameters.AddWithValue("@NGAYSX", ngaysx);
+                    sqlCommand.Parameters.AddWithValue("@DONGIA", donGia);
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("Đã lưu mới hàng hóa " + maHang);
+                    clear();
+                    setfalse();
                 }
-                btnLuu.Enabled = false;
-                btnThem.Enabled = true;
-                clear();
             }
-            Database.SqlConnection.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Có lỗi: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Database.SqlConnection.Close();
+                LoadForm();
+            }
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
-            themmoi = "sua";
+            themmoi = false;
             settrue();
             txtmahang.Enabled = false;
             btnLuu.Enabled = true;
@@ -142,22 +146,35 @@ namespace baitaplon
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (Database.SqlConnection.State == ConnectionState.Closed)
+            var rowsDeleted = 0;
+            foreach (DataGridViewRow row in dtgvhanghoa.SelectedRows)
             {
-                Database.SqlConnection.Open();
-                DialogResult chon = MessageBox.Show("Bạn có muốn xóa không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (chon == DialogResult.Yes)
+                var maHang = row.Cells[0]?.Value.ToString();
+                if (!string.IsNullOrEmpty(maHang))
                 {
-                    string sql = "delete from HANGHOA Where MAHANG = N'" + txtmahang.Text + "'";
-                    SqlCommand cmd = new SqlCommand(sql, Database.SqlConnection);
-                    Load_DataGridView();
-                    cmd.ExecuteNonQuery();
-                    Database.SqlConnection.Close();
-                    clear();
+                    try
+                    {
+                        string deleteQuery = @"DELETE FROM HANGHOA WHERE MAHANG = @MAHANG";
+                        Database.SqlConnection.Open();
+                        SqlCommand sqlCommand = new SqlCommand();
+                        sqlCommand.Connection = Database.SqlConnection;
+                        sqlCommand.CommandText = deleteQuery;
+                        sqlCommand.Parameters.AddWithValue("@MAHANG", maHang);
+                        sqlCommand.ExecuteNonQuery();
+                        rowsDeleted++;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Có lỗi: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        Database.SqlConnection.Close();
+                        LoadForm();
+                    }
                 }
-                else MessageBox.Show("Chọn thông tin cần xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            Database.SqlConnection.Close();
+            MessageBox.Show("Đã xóa " + rowsDeleted + " hàng hóa");
         }
     }
 }
