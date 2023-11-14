@@ -9,7 +9,7 @@
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            phanquyen();
         }
 
         private void quảnLíPhòngBanToolStripMenuItem_Click(object sender, EventArgs e)
@@ -77,6 +77,15 @@
         {
             frmThemTaikhoan n = new frmThemTaikhoan();
             n.Show();
+        }
+        private void phanquyen()
+        {
+            if (frmLogin.QUYEN == "User")
+            {
+                thôngTinTàiKhoảnToolStripMenuItem.Enabled = false;
+                nhậpDữLiệuToolStripMenuItem.Enabled = false;
+                tHỐNGKÊToolStripMenuItem.Visible = false;
+            }
         }
     }
 }

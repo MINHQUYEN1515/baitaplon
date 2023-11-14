@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\baitaplon\\baitaplon\\baitaplon.csproj": {}
+    "D:\\LTUD\\baitaplon\\baitaplon\\baitaplon.csproj": {}
   },
   "projects": {
-    "D:\\baitaplon\\baitaplon\\baitaplon.csproj": {
+    "D:\\LTUD\\baitaplon\\baitaplon\\baitaplon.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\baitaplon\\baitaplon\\baitaplon.csproj",
+        "projectUniqueName": "D:\\LTUD\\baitaplon\\baitaplon\\baitaplon.csproj",
         "projectName": "baitaplon",
-        "projectPath": "D:\\baitaplon\\baitaplon\\baitaplon.csproj",
-        "packagesPath": "C:\\Users\\ASUS-PRO\\.nuget\\packages\\",
-        "outputPath": "D:\\baitaplon\\baitaplon\\obj\\",
+        "projectPath": "D:\\LTUD\\baitaplon\\baitaplon\\baitaplon.csproj",
+        "packagesPath": "C:\\Users\\Nhat\\.nuget\\packages\\",
+        "outputPath": "D:\\LTUD\\baitaplon\\baitaplon\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS-PRO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Nhat\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

@@ -50,42 +50,46 @@
             panel1.Controls.Add(txtTendangnhap);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label7);
-            panel1.Location = new Point(345, 29);
+            panel1.Location = new Point(302, 22);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(424, 298);
+            panel1.Size = new Size(371, 224);
             panel1.TabIndex = 0;
             // 
             // txtPass
             // 
-            txtPass.Location = new Point(171, 166);
+            txtPass.Location = new Point(150, 124);
+            txtPass.Margin = new Padding(3, 2, 3, 2);
             txtPass.Name = "txtPass";
-            txtPass.Size = new Size(224, 27);
+            txtPass.Size = new Size(196, 23);
             txtPass.TabIndex = 35;
+            txtPass.UseSystemPasswordChar = true;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(13, 162);
+            label2.Location = new Point(11, 122);
             label2.Name = "label2";
-            label2.Size = new Size(102, 28);
+            label2.Size = new Size(82, 21);
             label2.TabIndex = 34;
             label2.Text = "Mật khẩu";
             // 
             // txtTendangnhap
             // 
-            txtTendangnhap.Location = new Point(171, 96);
+            txtTendangnhap.Location = new Point(150, 72);
+            txtTendangnhap.Margin = new Padding(3, 2, 3, 2);
             txtTendangnhap.Name = "txtTendangnhap";
-            txtTendangnhap.Size = new Size(224, 27);
+            txtTendangnhap.Size = new Size(196, 23);
             txtTendangnhap.TabIndex = 33;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(13, 92);
+            label1.Location = new Point(11, 69);
             label1.Name = "label1";
-            label1.Size = new Size(152, 28);
+            label1.Size = new Size(123, 21);
             label1.TabIndex = 32;
             label1.Text = "Tên đăng nhập";
             // 
@@ -93,9 +97,9 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(28, 24);
+            label7.Location = new Point(24, 18);
             label7.Name = "label7";
-            label7.Size = new Size(351, 38);
+            label7.Size = new Size(275, 30);
             label7.TabIndex = 31;
             label7.Text = "THÔNG TIN ĐĂNG NHẬP";
             label7.Click += label7_Click;
@@ -103,9 +107,10 @@
             // btnDangnhap
             // 
             btnDangnhap.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            btnDangnhap.Location = new Point(373, 350);
+            btnDangnhap.Location = new Point(326, 262);
+            btnDangnhap.Margin = new Padding(3, 2, 3, 2);
             btnDangnhap.Name = "btnDangnhap";
-            btnDangnhap.Size = new Size(152, 76);
+            btnDangnhap.Size = new Size(133, 57);
             btnDangnhap.TabIndex = 1;
             btnDangnhap.Text = "Đăng nhập";
             btnDangnhap.UseVisualStyleBackColor = true;
@@ -113,9 +118,10 @@
             // btnThoat
             // 
             btnThoat.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            btnThoat.Location = new Point(588, 350);
+            btnThoat.Location = new Point(514, 262);
+            btnThoat.Margin = new Padding(3, 2, 3, 2);
             btnThoat.Name = "btnThoat";
-            btnThoat.Size = new Size(152, 76);
+            btnThoat.Size = new Size(133, 57);
             btnThoat.TabIndex = 2;
             btnThoat.Text = "Thoát";
             btnThoat.UseVisualStyleBackColor = true;
@@ -123,21 +129,23 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(23, 29);
+            pictureBox1.Location = new Point(20, 22);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(308, 298);
+            pictureBox1.Size = new Size(270, 224);
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
             // frmLogin
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(pictureBox1);
             Controls.Add(btnThoat);
             Controls.Add(btnDangnhap);
             Controls.Add(panel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmLogin";
             Text = "ĐĂNG NHẬP HỆ THỐNG";
             panel1.ResumeLayout(false);
