@@ -16,11 +16,11 @@ namespace baitaplon
         public frmTKNhanvien_Phong()
         {
             InitializeComponent();
+            LoadDL_MaPhong();
         }
 
         private void frmTKNhanvien_Phong_Load(object sender, EventArgs e)
         {
-            LoadDL_MaPhong();
             Load_DataGridView();
             LoadSoNV();
         }
