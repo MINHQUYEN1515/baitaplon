@@ -16,11 +16,11 @@ namespace baitaplon
         public frmTKNhanvien_Phong()
         {
             InitializeComponent();
+            LoadDL_MaPhong();
         }
 
         private void frmTKNhanvien_Phong_Load(object sender, EventArgs e)
         {
-            LoadDL_MaPhong();
             Load_DataGridView();
             LoadSoNV();
         }
@@ -96,7 +96,7 @@ namespace baitaplon
         }
         private void Load_DataGridView()
         {
-            string sql = @"select MANV, HOTEN,(CASE WHEN PHAI = 1 THEN N'Nam' ELSE N'Nữ' END) as PHAI, NGAYSINH,HSLUONG,HSCHUCVU,(HSLUONG * 1300000 + HSCHUCVU * 1390000) AS TIENLUONG
+            string sql = @"select MANV, HOTEN,(CASE WHEN PHAI = 1 THEN N'Nam' ELSE N'Nữ' END) as PHAI, NGAYSINH,HSLUONG,HSCHUCVU,(HSLUONG * 1300000 + HSCHUCVU) AS TIENLUONG
                             from NHANVIEN INNER JOIN PHONGBAN ON NHANVIEN.MAPHONG = PHONGBAN.MAPHONG";
             SqlDataAdapter ad = new SqlDataAdapter(sql, Database.SqlConnection);
             DataTable dt = new DataTable();
