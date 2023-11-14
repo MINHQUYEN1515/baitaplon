@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmQuanlinhanvien));
             panel1 = new Panel();
+            dtpngaysinh = new DateTimePicker();
             label9 = new Label();
             txtHesochucvu = new TextBox();
             txtPhai = new TextBox();
@@ -41,13 +42,11 @@
             label4 = new Label();
             label6 = new Label();
             label5 = new Label();
-            txtNgaysinh = new TextBox();
             txtManv = new TextBox();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
             panel2 = new Panel();
-            btnLuuSua = new Button();
             btnThoat = new Button();
             btnXoa = new Button();
             btnLuu = new Button();
@@ -55,6 +54,8 @@
             btnThem = new Button();
             label10 = new Label();
             dgvquanlynhanvien = new DataGridView();
+            cbbmaphong = new ComboBox();
+            label11 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvquanlynhanvien).BeginInit();
@@ -63,6 +64,9 @@
             // panel1
             // 
             panel1.BackColor = Color.Fuchsia;
+            panel1.Controls.Add(label11);
+            panel1.Controls.Add(cbbmaphong);
+            panel1.Controls.Add(dtpngaysinh);
             panel1.Controls.Add(label9);
             panel1.Controls.Add(txtHesochucvu);
             panel1.Controls.Add(txtPhai);
@@ -74,7 +78,6 @@
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label5);
-            panel1.Controls.Add(txtNgaysinh);
             panel1.Controls.Add(txtManv);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
@@ -82,6 +85,14 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(857, 284);
             panel1.TabIndex = 1;
+            // 
+            // dtpngaysinh
+            // 
+            dtpngaysinh.Format = DateTimePickerFormat.Short;
+            dtpngaysinh.Location = new Point(212, 111);
+            dtpngaysinh.Name = "dtpngaysinh";
+            dtpngaysinh.Size = new Size(176, 27);
+            dtpngaysinh.TabIndex = 18;
             // 
             // label9
             // 
@@ -157,7 +168,6 @@
             label4.Size = new Size(175, 28);
             label4.TabIndex = 9;
             label4.Text = "Họ tên nhân viên";
-            label4.Click += label4_Click;
             // 
             // label6
             // 
@@ -178,13 +188,6 @@
             label5.Size = new Size(127, 28);
             label5.TabIndex = 7;
             label5.Text = "Hệ số lương";
-            // 
-            // txtNgaysinh
-            // 
-            txtNgaysinh.Location = new Point(212, 111);
-            txtNgaysinh.Name = "txtNgaysinh";
-            txtNgaysinh.Size = new Size(176, 27);
-            txtNgaysinh.TabIndex = 4;
             // 
             // txtManv
             // 
@@ -222,12 +225,10 @@
             label1.Size = new Size(433, 54);
             label1.TabIndex = 5;
             label1.Text = "QUẢN LÝ NHÂN VIÊN";
-            label1.Click += label1_Click;
             // 
             // panel2
             // 
             panel2.BackColor = Color.LightPink;
-            panel2.Controls.Add(btnLuuSua);
             panel2.Controls.Add(btnThoat);
             panel2.Controls.Add(btnXoa);
             panel2.Controls.Add(btnLuu);
@@ -239,41 +240,33 @@
             panel2.Size = new Size(325, 283);
             panel2.TabIndex = 17;
             // 
-            // btnLuuSua
-            // 
-            btnLuuSua.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLuuSua.Location = new Point(178, 127);
-            btnLuuSua.Name = "btnLuuSua";
-            btnLuuSua.Size = new Size(105, 44);
-            btnLuuSua.TabIndex = 24;
-            btnLuuSua.Text = "Lưu Sửa";
-            btnLuuSua.UseVisualStyleBackColor = true;
-            // 
             // btnThoat
             // 
             btnThoat.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnThoat.Image = (Image)resources.GetObject("btnThoat.Image");
             btnThoat.ImageAlign = ContentAlignment.MiddleLeft;
-            btnThoat.Location = new Point(178, 205);
+            btnThoat.Location = new Point(178, 127);
             btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(105, 44);
             btnThoat.TabIndex = 23;
             btnThoat.Text = "Thoát";
             btnThoat.TextAlign = ContentAlignment.MiddleRight;
             btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
             // 
             // btnXoa
             // 
             btnXoa.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnXoa.Image = (Image)resources.GetObject("btnXoa.Image");
             btnXoa.ImageAlign = ContentAlignment.MiddleLeft;
-            btnXoa.Location = new Point(23, 205);
+            btnXoa.Location = new Point(16, 205);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(105, 44);
             btnXoa.TabIndex = 22;
             btnXoa.Text = "Xóa";
             btnXoa.TextAlign = ContentAlignment.MiddleRight;
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnLuu
             // 
@@ -287,6 +280,7 @@
             btnLuu.Text = "Lưu";
             btnLuu.TextAlign = ContentAlignment.MiddleRight;
             btnLuu.UseVisualStyleBackColor = true;
+            btnLuu.Click += btnLuu_Click;
             // 
             // btnSua
             // 
@@ -300,6 +294,7 @@
             btnSua.Text = "Sửa";
             btnSua.TextAlign = ContentAlignment.MiddleRight;
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // btnThem
             // 
@@ -313,6 +308,7 @@
             btnThem.Text = "Thêm";
             btnThem.TextAlign = ContentAlignment.MiddleRight;
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // label10
             // 
@@ -326,6 +322,7 @@
             // 
             // dgvquanlynhanvien
             // 
+            dgvquanlynhanvien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvquanlynhanvien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvquanlynhanvien.Location = new Point(12, 370);
             dgvquanlynhanvien.Name = "dgvquanlynhanvien";
@@ -333,6 +330,25 @@
             dgvquanlynhanvien.RowTemplate.Height = 29;
             dgvquanlynhanvien.Size = new Size(1223, 199);
             dgvquanlynhanvien.TabIndex = 18;
+            dgvquanlynhanvien.CellContentClick += dgvquanlynhanvien_CellContentClick;
+            // 
+            // cbbmaphong
+            // 
+            cbbmaphong.FormattingEnabled = true;
+            cbbmaphong.Location = new Point(626, 222);
+            cbbmaphong.Name = "cbbmaphong";
+            cbbmaphong.Size = new Size(176, 28);
+            cbbmaphong.TabIndex = 19;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Location = new Point(445, 222);
+            label11.Name = "label11";
+            label11.Size = new Size(108, 28);
+            label11.TabIndex = 20;
+            label11.Text = "Mã phòng";
             // 
             // fmQuanlinhanvien
             // 
@@ -358,7 +374,6 @@
         #endregion
 
         private Panel panel1;
-        private TextBox txtNgaysinh;
         private TextBox txtManv;
         private Label label3;
         private Label label2;
@@ -381,7 +396,9 @@
         private Button btnLuu;
         private Button btnXoa;
         private Button btnThoat;
-        private Button btnLuuSua;
         private DataGridView dgvquanlynhanvien;
+        private DateTimePicker dtpngaysinh;
+        private Label label11;
+        private ComboBox cbbmaphong;
     }
 }
