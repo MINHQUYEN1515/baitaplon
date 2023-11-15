@@ -206,7 +206,5 @@ namespace baitaplon
             }
             MessageBox.Show("Đã xóa " + rowsDeleted + " nhân viên");
         }
-
-       
     }
 }

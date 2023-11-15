@@ -83,7 +83,6 @@
             txtMaphong.Name = "txtMaphong";
             txtMaphong.Size = new Size(176, 27);
             txtMaphong.TabIndex = 3;
-            txtMaphong.TextChanged += textBox1_TextChanged;
             // 
             // label4
             // 
@@ -114,7 +113,6 @@
             label2.Size = new Size(108, 28);
             label2.TabIndex = 0;
             label2.Text = "Mã phòng";
-            label2.Click += label2_Click;
             // 
             // label1
             // 
@@ -129,6 +127,7 @@
             // 
             // dgvThongtinphongban
             // 
+            dgvThongtinphongban.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvThongtinphongban.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvThongtinphongban.Location = new Point(27, 251);
             dgvThongtinphongban.Name = "dgvThongtinphongban";
@@ -136,6 +135,7 @@
             dgvThongtinphongban.RowTemplate.Height = 29;
             dgvThongtinphongban.Size = new Size(889, 188);
             dgvThongtinphongban.TabIndex = 2;
+            dgvThongtinphongban.CellContentClick += dgvThongtinphongban_CellContentClick;
             // 
             // c
             // 
@@ -162,6 +162,7 @@
             btnThoat.Text = "Thoát";
             btnThoat.TextAlign = ContentAlignment.MiddleRight;
             btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
             // 
             // btnXoa
             // 
@@ -175,6 +176,7 @@
             btnXoa.Text = "Xóa";
             btnXoa.TextAlign = ContentAlignment.MiddleRight;
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnLuu
             // 
@@ -188,6 +190,7 @@
             btnLuu.Text = "Lưu";
             btnLuu.TextAlign = ContentAlignment.MiddleRight;
             btnLuu.UseVisualStyleBackColor = true;
+            btnLuu.Click += btnLuu_Click;
             // 
             // btnSua
             // 
@@ -201,6 +204,7 @@
             btnSua.Text = "Sửa";
             btnSua.TextAlign = ContentAlignment.MiddleRight;
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // btnThem
             // 
@@ -214,6 +218,7 @@
             btnThem.Text = "Thêm";
             btnThem.TextAlign = ContentAlignment.MiddleRight;
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
             // 
             // fmQLPhongban
             // 
