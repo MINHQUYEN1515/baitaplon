@@ -105,7 +105,7 @@ namespace baitaplon
                 {
                     string queryString = @"UPDATE PHONGBAN
                                         SET TENPHONG = @TENPHONG,
-                                        DIENTHOAI = @DIENTHOAI,
+                                        DIENTHOAI = @DIENTHOAI
                                         WHERE MAPHONG = @MAPHONG";
                     sqlCommand.CommandText = queryString;
                     sqlCommand.Parameters.AddWithValue("@MAPHONG", maPhong);
@@ -117,22 +117,39 @@ namespace baitaplon
                     setfalse();
                     btnThem.Enabled = true;
                     btnSua.Enabled = true;
+                    btnLuu.Enabled = false;
                 }
                 else
                 {
-                    string queryString = @"INSERT INTO NHANVIEN
+                    string sql = "select count(*) from PHONGBAN where MAPHONG = '" + txtMaphong.Text + "'";
+                    SqlCommand cmd = new SqlCommand(sql, Database.SqlConnection);
+                    int count = (int)cmd.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Đã có mã phòng ban này rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtMaphong.Focus();
+                        btnThem.Enabled = true;
+                        btnSua.Enabled = true;
+                        btnLuu.Enabled = false;
+                        clear();
+                    }
+                    else
+                    {
+                        string queryString = @"INSERT INTO PHONGBAN
                                         VALUES (@MAPHONG, @TENPHONG ,@DIENTHOAI)";
-                    sqlCommand.CommandText = queryString;
-                    sqlCommand.Parameters.AddWithValue("@MAPHONG", maPhong);
-                    sqlCommand.Parameters.AddWithValue("@TENPHONG", tenPhong);
-                    sqlCommand.Parameters.AddWithValue("@DIENTHOAI", dienThoai);
+                        sqlCommand.CommandText = queryString;
+                        sqlCommand.Parameters.AddWithValue("@MAPHONG", maPhong);
+                        sqlCommand.Parameters.AddWithValue("@TENPHONG", tenPhong);
+                        sqlCommand.Parameters.AddWithValue("@DIENTHOAI", dienThoai);
 
-                    sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Đã thêm nhân viên " + maPhong, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    clear();
-                    setfalse();
-                    btnThem.Enabled = true;
-                    btnSua.Enabled = true;
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Đã thêm phòng ban " + maPhong, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clear();
+                        setfalse();
+                        btnThem.Enabled = true;
+                        btnSua.Enabled = true;
+                        btnLuu.Enabled = false;
+                    }
                 }
             }
             catch (Exception ex)
@@ -156,14 +173,18 @@ namespace baitaplon
                 {
                     try
                     {
-                        string deleteQuery = @"DELETE FROM PHONGBAN WHERE MAPHONG = @MAPHONG";
-                        Database.SqlConnection.Open();
-                        SqlCommand sqlCommand = new SqlCommand();
-                        sqlCommand.Connection = Database.SqlConnection;
-                        sqlCommand.CommandText = deleteQuery;
-                        sqlCommand.Parameters.AddWithValue("@MAPHONG", maPhong);
-                        sqlCommand.ExecuteNonQuery();
-                        rowsDeleted++;
+                        DialogResult dialog = MessageBox.Show("Bạn có muốn xóa không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                            if (dialog == DialogResult.Yes)
+                        {
+                            string deleteQuery = @"DELETE FROM PHONGBAN WHERE MAPHONG = @MAPHONG";
+                            Database.SqlConnection.Open();
+                            SqlCommand sqlCommand = new SqlCommand();
+                            sqlCommand.Connection = Database.SqlConnection;
+                            sqlCommand.CommandText = deleteQuery;
+                            sqlCommand.Parameters.AddWithValue("@MAPHONG", maPhong);
+                            sqlCommand.ExecuteNonQuery();
+                            rowsDeleted++;
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -176,7 +197,7 @@ namespace baitaplon
                     }
                 }
             }
-            MessageBox.Show("Đã xóa " + rowsDeleted + " nhân viên");
+            MessageBox.Show("Đã xóa " + rowsDeleted + " phòng ban");
         }
     }
 }

@@ -31,17 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThemTaikhoan));
             label7 = new Label();
             panel1 = new Panel();
-            label1 = new Label();
-            txtID_User = new TextBox();
+            txtQuyen = new TextBox();
+            label4 = new Label();
+            txtTentk = new TextBox();
+            lable = new Label();
             txtPass = new TextBox();
             label2 = new Label();
-            textBox3 = new TextBox();
-            txtQuyen = new Label();
-            textBox4 = new TextBox();
-            txtTenTK = new Label();
+            txtID_User = new TextBox();
+            label1 = new Label();
             panel2 = new Panel();
-            btnLuu = new Button();
             btnThoat = new Button();
+            btnLuu = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -59,10 +59,10 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(192, 255, 255);
-            panel1.Controls.Add(textBox3);
             panel1.Controls.Add(txtQuyen);
-            panel1.Controls.Add(textBox4);
-            panel1.Controls.Add(txtTenTK);
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(txtTentk);
+            panel1.Controls.Add(lable);
             panel1.Controls.Add(txtPass);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(txtID_User);
@@ -72,21 +72,37 @@
             panel1.Size = new Size(615, 159);
             panel1.TabIndex = 31;
             // 
-            // label1
+            // txtQuyen
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(37, 32);
-            label1.Name = "label1";
-            label1.Size = new Size(59, 20);
-            label1.TabIndex = 0;
-            label1.Text = "ID_User";
+            txtQuyen.Location = new Point(472, 104);
+            txtQuyen.Name = "txtQuyen";
+            txtQuyen.Size = new Size(125, 27);
+            txtQuyen.TabIndex = 7;
             // 
-            // txtID_User
+            // label4
             // 
-            txtID_User.Location = new Point(146, 25);
-            txtID_User.Name = "txtID_User";
-            txtID_User.Size = new Size(125, 27);
-            txtID_User.TabIndex = 1;
+            label4.AutoSize = true;
+            label4.Location = new Point(363, 111);
+            label4.Name = "label4";
+            label4.Size = new Size(51, 20);
+            label4.TabIndex = 6;
+            label4.Text = "Quyền";
+            // 
+            // txtTentk
+            // 
+            txtTentk.Location = new Point(472, 25);
+            txtTentk.Name = "txtTentk";
+            txtTentk.Size = new Size(125, 27);
+            txtTentk.TabIndex = 5;
+            // 
+            // lable
+            // 
+            lable.AutoSize = true;
+            lable.Location = new Point(363, 32);
+            lable.Name = "lable";
+            lable.Size = new Size(97, 20);
+            lable.TabIndex = 4;
+            lable.Text = "Tên tài khoản";
             // 
             // txtPass
             // 
@@ -104,37 +120,21 @@
             label2.TabIndex = 2;
             label2.Text = "Mật khẩu";
             // 
-            // textBox3
+            // txtID_User
             // 
-            textBox3.Location = new Point(472, 104);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(125, 27);
-            textBox3.TabIndex = 7;
+            txtID_User.Location = new Point(146, 25);
+            txtID_User.Name = "txtID_User";
+            txtID_User.Size = new Size(125, 27);
+            txtID_User.TabIndex = 1;
             // 
-            // txtQuyen
+            // label1
             // 
-            txtQuyen.AutoSize = true;
-            txtQuyen.Location = new Point(363, 111);
-            txtQuyen.Name = "txtQuyen";
-            txtQuyen.Size = new Size(51, 20);
-            txtQuyen.TabIndex = 6;
-            txtQuyen.Text = "Quyền";
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(472, 25);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(125, 27);
-            textBox4.TabIndex = 5;
-            // 
-            // txtTenTK
-            // 
-            txtTenTK.AutoSize = true;
-            txtTenTK.Location = new Point(363, 32);
-            txtTenTK.Name = "txtTenTK";
-            txtTenTK.Size = new Size(97, 20);
-            txtTenTK.TabIndex = 4;
-            txtTenTK.Text = "Tên tài khoản";
+            label1.AutoSize = true;
+            label1.Location = new Point(37, 32);
+            label1.Name = "label1";
+            label1.Size = new Size(59, 20);
+            label1.TabIndex = 0;
+            label1.Text = "ID_User";
             // 
             // panel2
             // 
@@ -145,19 +145,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(237, 159);
             panel2.TabIndex = 32;
-            // 
-            // btnLuu
-            // 
-            btnLuu.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLuu.Image = (Image)resources.GetObject("btnLuu.Image");
-            btnLuu.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLuu.Location = new Point(52, 12);
-            btnLuu.Name = "btnLuu";
-            btnLuu.Size = new Size(138, 48);
-            btnLuu.TabIndex = 3;
-            btnLuu.Text = "Lưu";
-            btnLuu.TextAlign = ContentAlignment.MiddleRight;
-            btnLuu.UseVisualStyleBackColor = true;
             // 
             // btnThoat
             // 
@@ -171,6 +158,21 @@
             btnThoat.Text = "Thoát";
             btnThoat.TextAlign = ContentAlignment.MiddleRight;
             btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
+            // 
+            // btnLuu
+            // 
+            btnLuu.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLuu.Image = (Image)resources.GetObject("btnLuu.Image");
+            btnLuu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLuu.Location = new Point(52, 12);
+            btnLuu.Name = "btnLuu";
+            btnLuu.Size = new Size(138, 48);
+            btnLuu.TabIndex = 3;
+            btnLuu.Text = "Lưu";
+            btnLuu.TextAlign = ContentAlignment.MiddleRight;
+            btnLuu.UseVisualStyleBackColor = true;
+            btnLuu.Click += btnLuu_Click;
             // 
             // frmThemTaikhoan
             // 
@@ -193,10 +195,10 @@
 
         private Label label7;
         private Panel panel1;
-        private TextBox textBox3;
-        private Label txtQuyen;
-        private TextBox textBox4;
-        private Label txtTenTK;
+        private TextBox txtQuyen;
+        private Label label4;
+        private TextBox txtTentk;
+        private Label lable;
         private TextBox txtPass;
         private Label label2;
         private TextBox txtID_User;

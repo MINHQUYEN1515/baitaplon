@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             label7 = new Label();
-            dataGridView1 = new DataGridView();
+            dgvtaikhoan = new DataGridView();
             panel1 = new Panel();
-            label1 = new Label();
-            txtSoTK = new TextBox();
-            btnThemTK = new Button();
-            btnRefrehTK = new Button();
-            btnXoaTK = new Button();
             btnThoat = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            btnXoaTK = new Button();
+            btnRefrehTK = new Button();
+            btnThemTK = new Button();
+            txtSoTK = new TextBox();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvtaikhoan).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -51,15 +51,16 @@
             label7.TabIndex = 30;
             label7.Text = "DANH SÁCH TÀI KHOẢN";
             // 
-            // dataGridView1
+            // dgvtaikhoan
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(23, 123);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(593, 252);
-            dataGridView1.TabIndex = 31;
+            dgvtaikhoan.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvtaikhoan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvtaikhoan.Location = new Point(23, 123);
+            dgvtaikhoan.Name = "dgvtaikhoan";
+            dgvtaikhoan.RowHeadersWidth = 51;
+            dgvtaikhoan.RowTemplate.Height = 29;
+            dgvtaikhoan.Size = new Size(593, 252);
+            dgvtaikhoan.TabIndex = 31;
             // 
             // panel1
             // 
@@ -75,43 +76,16 @@
             panel1.Size = new Size(319, 252);
             panel1.TabIndex = 32;
             // 
-            // label1
+            // btnThoat
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(3, 30);
-            label1.Name = "label1";
-            label1.Size = new Size(154, 28);
-            label1.TabIndex = 33;
-            label1.Text = "SỐ TÀI KHOẢN";
-            // 
-            // txtSoTK
-            // 
-            txtSoTK.Location = new Point(180, 38);
-            txtSoTK.Name = "txtSoTK";
-            txtSoTK.Size = new Size(125, 27);
-            txtSoTK.TabIndex = 34;
-            // 
-            // btnThemTK
-            // 
-            btnThemTK.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnThemTK.Location = new Point(3, 98);
-            btnThemTK.Name = "btnThemTK";
-            btnThemTK.Size = new Size(132, 67);
-            btnThemTK.TabIndex = 35;
-            btnThemTK.Text = "Thêm tài khoản";
-            btnThemTK.UseVisualStyleBackColor = true;
-            btnThemTK.Click += button1_Click;
-            // 
-            // btnRefrehTK
-            // 
-            btnRefrehTK.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnRefrehTK.Location = new Point(3, 171);
-            btnRefrehTK.Name = "btnRefrehTK";
-            btnRefrehTK.Size = new Size(132, 61);
-            btnRefrehTK.TabIndex = 36;
-            btnRefrehTK.Text = "Refesh tải khoản";
-            btnRefrehTK.UseVisualStyleBackColor = true;
+            btnThoat.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnThoat.Location = new Point(180, 171);
+            btnThoat.Name = "btnThoat";
+            btnThoat.Size = new Size(136, 61);
+            btnThoat.TabIndex = 38;
+            btnThoat.Text = "Thoát";
+            btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
             // 
             // btnXoaTK
             // 
@@ -124,15 +98,44 @@
             btnXoaTK.UseVisualStyleBackColor = true;
             btnXoaTK.Click += btnXoaTK_Click;
             // 
-            // btnThoat
+            // btnRefrehTK
             // 
-            btnThoat.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnThoat.Location = new Point(180, 171);
-            btnThoat.Name = "btnThoat";
-            btnThoat.Size = new Size(136, 61);
-            btnThoat.TabIndex = 38;
-            btnThoat.Text = "Thoát";
-            btnThoat.UseVisualStyleBackColor = true;
+            btnRefrehTK.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnRefrehTK.Location = new Point(3, 171);
+            btnRefrehTK.Name = "btnRefrehTK";
+            btnRefrehTK.Size = new Size(132, 61);
+            btnRefrehTK.TabIndex = 36;
+            btnRefrehTK.Text = "Refesh tải khoản";
+            btnRefrehTK.UseVisualStyleBackColor = true;
+            btnRefrehTK.Click += btnRefrehTK_Click;
+            // 
+            // btnThemTK
+            // 
+            btnThemTK.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnThemTK.Location = new Point(3, 98);
+            btnThemTK.Name = "btnThemTK";
+            btnThemTK.Size = new Size(132, 67);
+            btnThemTK.TabIndex = 35;
+            btnThemTK.Text = "Thêm tài khoản";
+            btnThemTK.UseVisualStyleBackColor = true;
+            btnThemTK.Click += btnThemTK_Click;
+            // 
+            // txtSoTK
+            // 
+            txtSoTK.Location = new Point(180, 38);
+            txtSoTK.Name = "txtSoTK";
+            txtSoTK.Size = new Size(125, 27);
+            txtSoTK.TabIndex = 34;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(3, 30);
+            label1.Name = "label1";
+            label1.Size = new Size(154, 28);
+            label1.TabIndex = 33;
+            label1.Text = "SỐ TÀI KHOẢN";
             // 
             // frmDSTaikhoan
             // 
@@ -140,11 +143,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1086, 450);
             Controls.Add(panel1);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvtaikhoan);
             Controls.Add(label7);
             Name = "frmDSTaikhoan";
             Text = "QUẢN LÍ TÀI KHOẢN";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvtaikhoan).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -154,7 +157,7 @@
         #endregion
 
         private Label label7;
-        private DataGridView dataGridView1;
+        private DataGridView dgvtaikhoan;
         private Panel panel1;
         private Label label1;
         private Button btnThoat;

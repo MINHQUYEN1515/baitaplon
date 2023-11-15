@@ -79,6 +79,7 @@ namespace baitaplon
             settrue();
             btnLuu.Enabled = true;
             btnThem.Enabled = false;
+            btnSua.Enabled = false;
             themmoi = true;
         }
 
@@ -110,20 +111,41 @@ namespace baitaplon
                     clear();
                     setfalse();
                     btnThem.Enabled = true;
+                    btnSua.Enabled = true;
+                    btnLuu.Enabled = false;
                 }
                 else
                 {
-                    string queryString = @"INSERT INTO HANGHOA
+                    string sql = "select count(*) from HANGHOA where MAHANG = '" + txtmahang.Text + "'";
+                    SqlCommand cmd = new SqlCommand(sql, Database.SqlConnection);
+                    int count = (int)cmd.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Đã có mã hàng hóa này rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtmahang.Focus();
+                        btnThem.Enabled = true;
+                        btnSua.Enabled = true;
+                        btnLuu.Enabled = false;
+                        clear();
+                    }
+                    else
+                    {
+                        string queryString = @"INSERT INTO HANGHOA
                                         VALUES (@MAHANG, @TENHANG,@NGAYSX, @DONGIA)";
-                    sqlCommand.CommandText = queryString;
-                    sqlCommand.Parameters.AddWithValue("@MAHANG", maHang);
-                    sqlCommand.Parameters.AddWithValue("@TENHANG", tenHang);
-                    sqlCommand.Parameters.AddWithValue("@NGAYSX", ngaysx);
-                    sqlCommand.Parameters.AddWithValue("@DONGIA", donGia);
-                    sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Đã lưu mới hàng hóa " + maHang);
-                    clear();
-                    setfalse();
+                        sqlCommand.CommandText = queryString;
+                        sqlCommand.Parameters.AddWithValue("@MAHANG", maHang);
+                        sqlCommand.Parameters.AddWithValue("@TENHANG", tenHang);
+                        sqlCommand.Parameters.AddWithValue("@NGAYSX", ngaysx);
+                        sqlCommand.Parameters.AddWithValue("@DONGIA", donGia);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Đã lưu mới hàng hóa " + maHang);
+                        clear();
+                        setfalse();
+                        btnThem.Enabled = true;
+                        btnSua.Enabled = true;
+                        btnLuu.Enabled = false;
+                    }
+                    
                 }
             }
             catch (Exception ex)
@@ -154,14 +176,18 @@ namespace baitaplon
                 {
                     try
                     {
-                        string deleteQuery = @"DELETE FROM HANGHOA WHERE MAHANG = @MAHANG";
-                        Database.SqlConnection.Open();
-                        SqlCommand sqlCommand = new SqlCommand();
-                        sqlCommand.Connection = Database.SqlConnection;
-                        sqlCommand.CommandText = deleteQuery;
-                        sqlCommand.Parameters.AddWithValue("@MAHANG", maHang);
-                        sqlCommand.ExecuteNonQuery();
-                        rowsDeleted++;
+                        DialogResult dialog = MessageBox.Show("Bạn có muốn xóa không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialog == DialogResult.Yes)
+                        {
+                            string deleteQuery = @"DELETE FROM HANGHOA WHERE MAHANG = @MAHANG";
+                            Database.SqlConnection.Open();
+                            SqlCommand sqlCommand = new SqlCommand();
+                            sqlCommand.Connection = Database.SqlConnection;
+                            sqlCommand.CommandText = deleteQuery;
+                            sqlCommand.Parameters.AddWithValue("@MAHANG", maHang);
+                            sqlCommand.ExecuteNonQuery();
+                            rowsDeleted++;
+                        }
                     }
                     catch (Exception ex)
                     {

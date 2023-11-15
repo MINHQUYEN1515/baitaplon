@@ -123,6 +123,7 @@
             đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
             đăngXuấtToolStripMenuItem.Size = new Size(224, 26);
             đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+            đăngXuấtToolStripMenuItem.Click += đăngXuấtToolStripMenuItem_Click;
             // 
             // thoátToolStripMenuItem
             // 
@@ -140,28 +141,28 @@
             // quảnLíPhòngBanToolStripMenuItem
             // 
             quảnLíPhòngBanToolStripMenuItem.Name = "quảnLíPhòngBanToolStripMenuItem";
-            quảnLíPhòngBanToolStripMenuItem.Size = new Size(224, 26);
+            quảnLíPhòngBanToolStripMenuItem.Size = new Size(215, 26);
             quảnLíPhòngBanToolStripMenuItem.Text = "Quản lí phòng ban";
             quảnLíPhòngBanToolStripMenuItem.Click += quảnLíPhòngBanToolStripMenuItem_Click;
             // 
             // quảnLíHàngHóaToolStripMenuItem
             // 
             quảnLíHàngHóaToolStripMenuItem.Name = "quảnLíHàngHóaToolStripMenuItem";
-            quảnLíHàngHóaToolStripMenuItem.Size = new Size(224, 26);
+            quảnLíHàngHóaToolStripMenuItem.Size = new Size(215, 26);
             quảnLíHàngHóaToolStripMenuItem.Text = "Quản lí hàng hóa";
             quảnLíHàngHóaToolStripMenuItem.Click += quảnLíHàngHóaToolStripMenuItem_Click;
             // 
             // quảnLíNhânViênToolStripMenuItem
             // 
             quảnLíNhânViênToolStripMenuItem.Name = "quảnLíNhânViênToolStripMenuItem";
-            quảnLíNhânViênToolStripMenuItem.Size = new Size(224, 26);
+            quảnLíNhânViênToolStripMenuItem.Size = new Size(215, 26);
             quảnLíNhânViênToolStripMenuItem.Text = "Quản lí nhân viên";
             quảnLíNhânViênToolStripMenuItem.Click += quảnLíNhânViênToolStripMenuItem_Click;
             // 
             // quảnLíHóaĐơnToolStripMenuItem
             // 
             quảnLíHóaĐơnToolStripMenuItem.Name = "quảnLíHóaĐơnToolStripMenuItem";
-            quảnLíHóaĐơnToolStripMenuItem.Size = new Size(224, 26);
+            quảnLíHóaĐơnToolStripMenuItem.Size = new Size(215, 26);
             quảnLíHóaĐơnToolStripMenuItem.Text = "Quản lí hóa đơn";
             quảnLíHóaĐơnToolStripMenuItem.Click += quảnLíHóaĐơnToolStripMenuItem_Click;
             // 
@@ -223,6 +224,7 @@
             MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "CHƯƠNG TRÌNH QUẢN LÍ BÁN HÀNG";
+            WindowState = FormWindowState.Maximized;
             Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

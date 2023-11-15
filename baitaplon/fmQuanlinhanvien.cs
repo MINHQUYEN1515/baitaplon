@@ -142,25 +142,42 @@ namespace baitaplon
                     setfalse();
                     btnThem.Enabled = true;
                     btnSua.Enabled = true;
+                    btnLuu.Enabled = false;
                 }
                 else
                 {
-                    string queryString = @"INSERT INTO NHANVIEN
+                    string sql = "select count(*) from NHANVIEN where MANV = '" + txtManv.Text + "'";
+                    SqlCommand cmd = new SqlCommand(sql, Database.SqlConnection);
+                    int count = (int)cmd.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Đã có mã nhân viên này rồi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtManv.Focus();
+                        btnThem.Enabled = true;
+                        btnSua.Enabled = true;
+                        btnLuu.Enabled = false;
+                        clear();
+                    }
+                    else
+                    {
+                        string queryString = @"INSERT INTO NHANVIEN
                                         VALUES (@MANV, @HOTEN ,@PHAI, @NGAYSINH, @HSLUONG, @HSCHUCVU, @MAPHONG)";
-                    sqlCommand.CommandText = queryString;
-                    sqlCommand.Parameters.AddWithValue("@MANV", maNhanVien);
-                    sqlCommand.Parameters.AddWithValue("@HOTEN", tenNhanVien);
-                    sqlCommand.Parameters.AddWithValue("@PHAI", gioiTinh);
-                    sqlCommand.Parameters.AddWithValue("@NGAYSINH", ngaySinh);
-                    sqlCommand.Parameters.AddWithValue("@HSLUONG", hsl);
-                    sqlCommand.Parameters.AddWithValue("@HSCHUCVU", hscv);
-                    sqlCommand.Parameters.AddWithValue("@MAPHONG", maPhong);
-                    sqlCommand.ExecuteNonQuery();
-                    MessageBox.Show("Đã thêm nhân viên " + maNhanVien, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    clear();
-                    setfalse();
-                    btnThem.Enabled = true;
-                    btnSua.Enabled = true;
+                        sqlCommand.CommandText = queryString;
+                        sqlCommand.Parameters.AddWithValue("@MANV", maNhanVien);
+                        sqlCommand.Parameters.AddWithValue("@HOTEN", tenNhanVien);
+                        sqlCommand.Parameters.AddWithValue("@PHAI", gioiTinh);
+                        sqlCommand.Parameters.AddWithValue("@NGAYSINH", ngaySinh);
+                        sqlCommand.Parameters.AddWithValue("@HSLUONG", hsl);
+                        sqlCommand.Parameters.AddWithValue("@HSCHUCVU", hscv);
+                        sqlCommand.Parameters.AddWithValue("@MAPHONG", maPhong);
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("Đã thêm nhân viên " + maNhanVien, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clear();
+                        setfalse();
+                        btnThem.Enabled = true;
+                        btnSua.Enabled = true;
+                        btnLuu.Enabled = false;
+                    }
                 }
             }
             catch (Exception ex)
@@ -184,14 +201,18 @@ namespace baitaplon
                 {
                     try
                     {
-                        string deleteQuery = @"DELETE FROM NHANVIEN WHERE MANV = @MANV";
-                        Database.SqlConnection.Open();
-                        SqlCommand sqlCommand = new SqlCommand();
-                        sqlCommand.Connection = Database.SqlConnection;
-                        sqlCommand.CommandText = deleteQuery;
-                        sqlCommand.Parameters.AddWithValue("@MANV", maNhanVien);
-                        sqlCommand.ExecuteNonQuery();
-                        rowsDeleted++;
+                        DialogResult dialog = MessageBox.Show("Bạn có muốn xóa không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialog == DialogResult.Yes)
+                        {
+                            string deleteQuery = @"DELETE FROM NHANVIEN WHERE MANV = @MANV";
+                            Database.SqlConnection.Open();
+                            SqlCommand sqlCommand = new SqlCommand();
+                            sqlCommand.Connection = Database.SqlConnection;
+                            sqlCommand.CommandText = deleteQuery;
+                            sqlCommand.Parameters.AddWithValue("@MANV", maNhanVien);
+                            sqlCommand.ExecuteNonQuery();
+                            rowsDeleted++;
+                        }
                     }
                     catch (Exception ex)
                     {
