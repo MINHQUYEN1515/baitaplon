@@ -17,11 +17,6 @@ namespace baitaplon
         {
             InitializeComponent();
         }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
         public static string QUYEN = "";
         private string LAYQUYEN()
         {
@@ -50,7 +45,7 @@ namespace baitaplon
             }
             return Q;
         }
-        private void btnDangnhap_Click(object sender, EventArgs e)
+        private void btnDangnhap_Click_1(object sender, EventArgs e)
         {
             if (Database.SqlConnection.State == ConnectionState.Closed)
                 Database.SqlConnection.Open();
@@ -73,7 +68,8 @@ namespace baitaplon
             }
             Database.SqlConnection.Close();
         }
-        private void btnThoat_Click(object sender, EventArgs e)
+
+        private void btnThoat_Click_1(object sender, EventArgs e)
         {
             DialogResult Traloi;
             Traloi = MessageBox.Show("Bạn có chắc thoát không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
