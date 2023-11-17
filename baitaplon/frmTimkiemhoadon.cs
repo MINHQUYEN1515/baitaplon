@@ -37,9 +37,9 @@ namespace baitaplon
         private void Loadhanghoa()
         {
             Database.SqlConnection.Open();
-            String sql = "select HANghoa.MAHH ,hanghoa.tenhh,soluong,dongia ,coalesce(CThoadon.SOLUONG , 0) * coalesce(Hanghoa.DONGIA , 0) as thanhtien from HOADON " +
+            String sql = "select HANghoa.MAHANG ,hanghoa.tenhang,soluong,dongia ,coalesce(CThoadon.SOLUONG , 0) * coalesce(Hanghoa.DONGIA , 0) as thanhtien from HOADON " +
                 "\r\ninner join CTHOADON on CTHOADON.SOHD =Hoadon.SOHD" +
-                " \r\ninner join HANGHOA on hanghoa.MAHH =CThoadon.MAHH " +
+                " \r\ninner join HANGHOA on hanghoa.MAHANG =CThoadon.MAHANG " +
                 " where CThoadon.SOHD =" + "'" + cbselect.SelectedValue.ToString() + "'";
             SqlCommand cmd = new SqlCommand(sql, Database.SqlConnection);
             SqlDataReader dataReader = cmd.ExecuteReader();

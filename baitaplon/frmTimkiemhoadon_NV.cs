@@ -66,7 +66,7 @@ namespace baitaplon
             Database.SqlConnection.Open();
             String sql = "select HOADON.SOHD ,khachhang,diachi,diachi,ngayhd ,coalesce(CThoadon.SOLUONG , 0) * coalesce(Hanghoa.DONGIA , 0) as thanhtien from HOADON" +
                 " \r\ninner join CTHOADON on CTHOADON.SOHD =Hoadon.SOHD " +
-                "\r\ninner join HANGHOA on hanghoa.MAHH =CThoadon.MAHH " +
+                "\r\ninner join HANGHOA on hanghoa.MAHang =CThoadon.MAHang " +
                 "where hoadon.MANV =" + "'" + cbSelect.SelectedValue.ToString() + "'";
             SqlCommand cmd = new SqlCommand(sql, Database.SqlConnection);
             SqlDataReader dataReader = cmd.ExecuteReader();
